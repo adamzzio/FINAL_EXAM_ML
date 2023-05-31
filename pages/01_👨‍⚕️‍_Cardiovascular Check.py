@@ -315,7 +315,19 @@ elif jenis_metode == 'Form':
             # df_result['Result'] = df_result['Result'].replace(0, 'negative')
             # df_result['Result'] = df_result['Result'].replace(1, 'positive')
             # st.dataframe(df_result)
-
+        
+        # SUBMIT PREDICTIONS TO DATABASE
+        data = {'Age': st.session_state['age'],
+                'Gender': st.session_state['gender'],
+                'Heart rate': st.session_state['heart_rate'],
+                'Systolic blood pressure': st.session_state['systolic'],
+                'Diastolic blood pressure': st.session_state['diastolic'],
+                'Blood sugar': st.session_state['blood_sugar'],
+                'CK-MB': st.session_state['ckmb'],
+                'Troponin': st.session_state['troponin']}
+        save_data_to_firebase(data)
+        st.success("Data Anda berhasil disimpan ke database")
+        
         st.markdown('<hr>', unsafe_allow_html=True)
 
 elif jenis_metode == 'Batch (Excel)':
