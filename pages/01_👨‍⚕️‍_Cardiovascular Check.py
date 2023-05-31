@@ -218,22 +218,34 @@ if jenis_metode == 'AI Chatbot':
             text_result = "Pasien Anda memiliki peluang untuk dinyatakan negatif memiliki penyakit jantung"
             st.success(text_result)
             st.balloons()
+            # SUBMIT PREDICTIONS TO DATABASE
+            data = {'Age': st.session_state['age'],
+                    'Gender': st.session_state['gender'],
+                    'Heart rate': st.session_state['heart_rate'],
+                    'Systolic blood pressure': st.session_state['systolic'],
+                    'Diastolic blood pressure': st.session_state['diastolic'],
+                    'Blood sugar': st.session_state['blood_sugar'],
+                    'CK-MB': st.session_state['ckmb'],
+                    'Troponin': st.session_state['troponin'],
+                    'Result': 'negative'}
+            save_data_to_firebase(data)
+            st.success("Data Anda berhasil disimpan ke database")
         else:
             text_result = "Pasien Anda memiliki peluang untuk dinyatakan positif memiliki penyakit jantung"
             st.error(text_result)
             st.balloons()
-            
-        # SUBMIT PREDICTIONS TO DATABASE
-        data = {'Age': st.session_state['age'],
-                'Gender': st.session_state['gender'],
-                'Heart rate': st.session_state['heart_rate'],
-                'Systolic blood pressure': st.session_state['systolic'],
-                'Diastolic blood pressure': st.session_state['diastolic'],
-                'Blood sugar': st.session_state['blood_sugar'],
-                'CK-MB': st.session_state['ckmb'],
-                'Troponin': st.session_state['troponin']}
-        save_data_to_firebase(data)
-        st.success("Data Anda berhasil disimpan ke database")
+            # SUBMIT PREDICTIONS TO DATABASE
+            data = {'Age': st.session_state['age'],
+                    'Gender': st.session_state['gender'],
+                    'Heart rate': st.session_state['heart_rate'],
+                    'Systolic blood pressure': st.session_state['systolic'],
+                    'Diastolic blood pressure': st.session_state['diastolic'],
+                    'Blood sugar': st.session_state['blood_sugar'],
+                    'CK-MB': st.session_state['ckmb'],
+                    'Troponin': st.session_state['troponin'],
+                    'Result': 'positive'}
+            save_data_to_firebase(data)
+            st.success("Data Anda berhasil disimpan ke database")
 
         st.markdown('<hr>', unsafe_allow_html=True)
 
@@ -301,32 +313,34 @@ elif jenis_metode == 'Form':
             st.error(text_result)
             st.balloons()
             # SUBMIT PREDICTIONS TO DATABASE
-            # df_result['Result'] = result
-            # df_result['Result'] = df_result['Result'].replace(0, 'negative')
-            # df_result['Result'] = df_result['Result'].replace(1, 'positive')
-            # st.dataframe(df_result)
+            data = {'Age': age,
+                    'Gender': gender,
+                    'Heart rate': heart_rate,
+                    'Systolic blood pressure': systolic,
+                    'Diastolic blood pressure': diastolic,
+                    'Blood sugar': blood_sugar,
+                    'CK-MB': ckmb,
+                    'Troponin': troponin,
+                    'Result': 'negative'}
+            save_data_to_firebase(data)
+            st.success("Data Anda berhasil disimpan ke database")
         else:
             text_result = "Pasien Anda memiliki peluang " + str(
                 result_proba) + "% dinyatakan positif memiliki penyakit jantung"
             st.success(text_result)
             st.balloons()
             # SUBMIT PREDICTIONS TO DATABASE
-            # df_result['Result'] = result
-            # df_result['Result'] = df_result['Result'].replace(0, 'negative')
-            # df_result['Result'] = df_result['Result'].replace(1, 'positive')
-            # st.dataframe(df_result)
-        
-        # SUBMIT PREDICTIONS TO DATABASE
-        data = {'Age': st.session_state['age'],
-                'Gender': st.session_state['gender'],
-                'Heart rate': st.session_state['heart_rate'],
-                'Systolic blood pressure': st.session_state['systolic'],
-                'Diastolic blood pressure': st.session_state['diastolic'],
-                'Blood sugar': st.session_state['blood_sugar'],
-                'CK-MB': st.session_state['ckmb'],
-                'Troponin': st.session_state['troponin']}
-        save_data_to_firebase(data)
-        st.success("Data Anda berhasil disimpan ke database")
+            data = {'Age': age,
+                    'Gender': gender,
+                    'Heart rate': heart_rate,
+                    'Systolic blood pressure': systolic,
+                    'Diastolic blood pressure': diastolic,
+                    'Blood sugar': blood_sugar,
+                    'CK-MB': ckmb,
+                    'Troponin': troponin,
+                    'Result': 'positive'}
+            save_data_to_firebase(data)
+            st.success("Data Anda berhasil disimpan ke database")
         
         st.markdown('<hr>', unsafe_allow_html=True)
 
