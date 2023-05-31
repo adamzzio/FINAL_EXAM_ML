@@ -207,13 +207,6 @@ if jenis_metode == 'AI Chatbot':
     if all(value is not None for value in df_result.iloc[0].values):
         st.dataframe(df_result, use_container_width=True)
         result = model.predict(df_result.values)
-        result_proba = model.predict_proba(df_result.values)
-        # result_proba = str(result_proba)
-        result_proba = np.max(result_proba[0])
-        result_proba = np.round(result_proba, 2)
-        result_proba = result_proba * 100
-        st.write(result)
-        st.write(result_proba)
         if result == 0:
             text_result = "Pasien Anda memiliki peluang untuk dinyatakan negatif memiliki penyakit jantung"
             st.success(text_result)
