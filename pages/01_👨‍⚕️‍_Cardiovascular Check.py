@@ -173,7 +173,8 @@ if jenis_metode == 'AI Chatbot':
                 message(st.session_state["generated"][i], key=str(i))
 
     if st.button("Reset", use_container_width=True):
-        pyautogui.hotkey("ctrl","F5")
+#         pyautogui.hotkey("ctrl","F5")
+        st.markdown('<meta http-equiv="refresh" content="0;URL=https://cardiocheck-v2.streamlit.app/%E2%80%8D_Cardiovascular_Check" />', unsafe_allow_html=True)
 
     # SAVE RESULT TO DATAFRAME
     df_result = pd.DataFrame({'Age': [st.session_state['age']],
