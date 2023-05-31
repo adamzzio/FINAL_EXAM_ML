@@ -22,7 +22,7 @@ from lightgbm import LGBMClassifier
 # etc
 from PIL import Image
 import requests
-import pyautogui
+# import pyautogui
 from sklearn import preprocessing
 from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl import Workbook
