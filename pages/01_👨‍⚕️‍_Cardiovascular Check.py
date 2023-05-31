@@ -14,10 +14,10 @@ import pickle as pkl
 from lightgbm import LGBMClassifier
 
 # for database
-# import firebase_admin
-# import csv
-# import google.cloud
-# from firebase_admin import credentials, firestore
+import firebase_admin
+import csv
+import google.cloud
+from firebase_admin import credentials, firestore
 
 # etc
 from PIL import Image
@@ -50,6 +50,16 @@ def load_model():
     return model
 
 model = load_model()
+
+# Buat fungsi baru untuk mendapatkan referensi ke Firebase App
+def get_firebase_app():
+    # Periksa apakah aplikasi Firebase sudah ada
+    if not firebase_admin._apps:
+        # Jika belum ada, inisialisasi Firebase Admin SDK
+        cred = credentials.Certificate("test-db-19c39-firebase-adminsdk-3noie-95deabbed0.json")
+        firebase_admin.initialize_app(cred)
+    # Kembalikan referensi ke aplikasi Firebase
+    return firebase_admin.get_app()
 
 # ===== SET PAGE IF INPUT EQUAL TO AI =====
 if jenis_metode == 'AI Chatbot':
