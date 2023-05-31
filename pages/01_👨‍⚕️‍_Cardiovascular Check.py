@@ -247,7 +247,7 @@ elif jenis_metode == 'Form':
                                 key='4')
     blood_sugar = st.number_input(label='Masukkan kadar gula darah pasien : ', min_value=0, max_value=1000, step=10,
                                   key='5')
-    ckmb = st.number_input(label='Masukkan kadar CK-Mb pasien : ', min_value=0.0, max_value=100, step=0.1, key='6')
+    ckmb = st.number_input(label='Masukkan kadar CK-Mb pasien : ', min_value=0.0, max_value=100.0, step=0.1, key='6')
     troponin = st.number_input(label='Masukkan kadar troponin pasien : ', min_value=0.0, max_value=100.0, step=0.1,
                                key='7')
 
