@@ -307,7 +307,7 @@ elif jenis_metode == 'Form':
             st.balloons()
             # SUBMIT PREDICTIONS TO DATABASE
             data = {'Age': age,
-                    'Gender': df_result['Gender'].values,
+                    'Gender': gender,
                     'Heart rate': heart_rate,
                     'Systolic blood pressure': systolic,
                     'Diastolic blood pressure': diastolic,
@@ -324,7 +324,7 @@ elif jenis_metode == 'Form':
             st.balloons()
             # SUBMIT PREDICTIONS TO DATABASE
             data = {'Age': age,
-                    'Gender': df_result['Gender'].values,
+                    'Gender': gender,
                     'Heart rate': heart_rate,
                     'Systolic blood pressure': systolic,
                     'Diastolic blood pressure': diastolic,
