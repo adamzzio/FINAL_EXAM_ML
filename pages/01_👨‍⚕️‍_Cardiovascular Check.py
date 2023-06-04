@@ -42,7 +42,7 @@ jenis_metode = st.sidebar.selectbox(
      'Batch (Excel)'))
 # ===== LOAD MODEL & DATA =====
 
-filename_model = 'model/finalized_model_dt_tuning_v1.sav'
+filename_model = 'model/finalized_model_lgbm_tuning.sav'
 
 @st.cache_resource
 def load_model():
